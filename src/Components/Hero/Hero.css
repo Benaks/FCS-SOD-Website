@@ -1,0 +1,11 @@
+.hero-dot{
+    background-color: white;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: flex;
+    cursor: pointer;
+}
+.hero-dot.orange{
+    background-color:#637462;
+}
