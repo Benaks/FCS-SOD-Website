@@ -1,7 +1,8 @@
 import React from 'react'
 import Img from '../../assets/slide1.jpg'
 import { PiCertificateBold } from "react-icons/pi";
-
+import { FaHandsHelping } from "react-icons/fa";
+import { AiOutlineRise } from "react-icons/ai";
 const Benefits = () => {
   return (
     <div className='bg-white py-20 px-[10vw]'>
@@ -27,7 +28,7 @@ const Benefits = () => {
                       
                       <div className='bg-primary/40 rounded-lg shadow-md flex p-10 hover:scale-105 duration-200 gap-4 '>
                           <div className=' flex justify-center '>
-                          <PiCertificateBold className='text-7xl text-accent '/>
+                          <FaHandsHelping className='text-7xl text-accent '/>
                           </div>
 
                           <div className=''>
@@ -43,7 +44,7 @@ const Benefits = () => {
 
                       <div className='bg-primary/40 gap-4 rounded-lg shadow-md flex p-10 hover:scale-105 duration-200 '>
                           <div className=' flex justify-center '>
-                          <PiCertificateBold className='text-7xl text-accent '/>
+                          <AiOutlineRise className='text-7xl text-accent '/>
                           </div>
 
                           <div className=''>

@@ -19,8 +19,8 @@ const QandA = () => {
       <div className='bg-white dark:bg-primary dark:text-secondary flex py-20 flex-col justify-center items-center px-[10vw] text-center'>
            
       <div className='flex flex-col justify-center items-center'>
-              <p className='font-bold text-accent'>Q&A</p>
-               <h1   className='text-secondary font-semibold text-[1em] md:text-[2em] dark:text-secondary'>Likely questions you might ask..</h1>
+              <p className='font-bold text-accent'>FAQ</p>
+               <h1   className='text-secondary font-bold text-[1.8em] md:text-[2em] dark:text-secondary'>Likely questions you might ask..</h1>
           </div>
           
           

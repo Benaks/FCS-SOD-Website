@@ -1,28 +1,31 @@
 import React from 'react';
-import Favour from './img/favour.jpg'
+import Nenrot from './img/NentorIMG.jpg'
+import Enoch from './img/EnochIMG.jpg'
+import PromiseA from './img/PromiseIMG.jpg'
+import Daodu from './img/DaoduIMG.jpg'
 const testimonials = [
     {
-      image: 'https://via.placeholder.com/150',
-      name: 'John Doe',
+      image: Daodu,
+      name: 'Michael Daodu',
       level: '200L',
-      testimony: 'This is an amazing platform! I have learned so much.',
+      testimony: 'SOD Class of intimacy and supernatural nurtured my mind, body, and spirit, reigniting my passion for life and deepening my spiritual connection.',
     },
     {
-      image: 'https://via.placeholder.com/150',
-      name: 'Jane Smith',
+      image: PromiseA,
+      name: 'Promise Amma',
       level: '300L',
-      testimony: 'The courses are well structured and easy to follow.',
+      testimony: 'Attending SOD has deepened my understanding of my life’s purpose and faith, truly preparing me for my destiny.',
     },
     {
-      image: 'https://via.placeholder.com/150',
-      name: '400L',
-      level: 'Advanced',
-      testimony: 'I love the advanced topics covered here, it’s really insightful!',
+      image:Enoch,
+      name: 'Oladeji Enoch Victor',
+      level: '400L',
+      testimony: 'SOD refined my mind towards the concept of ethics, communication, purpose, finance and spirituality. It exposed me holistically about life.',
     },
     {
-      image: 'https://via.placeholder.com/150',
-      name: 'Favour Nenrot',
-      level: '500',
+      image:Nenrot,
+      name: 'Msugh Favour Nenrot',
+      level: '500L',
       testimony: 'From 100 to 500 level, each SOD class reshaped my thoughts, aligning with my life seasons, fostering intentional learning and growth.',
     },
   ];
@@ -43,7 +46,7 @@ const Testimonial = () => {
           <div className="flex items-center mb-4">
             <img
               className="w-20 h-20 rounded-full"
-              src={Favour}
+              src={testimonial.image}
               alt={`${testimonial.name}'s profile`}
             />
             <div className="ml-4">
