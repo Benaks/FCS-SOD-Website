@@ -45,11 +45,11 @@ const Hero = ({heroData, setHeroCount, heroCount, setPlayStatus, playStatus}) =>
 </div>
 
         {/* KINDE BUTTONS */}
-
+{/* 
         <div className="flex gap-4">
           
           <button onClick={login} type="button" className="bg-accent p-1 text-white">Log In</button>
-        </div>
+        </div> */}
 
     
 

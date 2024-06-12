@@ -9,6 +9,7 @@ import Partners from "./Components/Partners/Partners";
 import Benefits from "./Components/Benefits/Benefits";
 import Principals from "./Components/Principals/Principals";
 import Testimonial from "./Components/Testimonials/Testimonial";
+import axios from "axios";
 
 
 const App = () => {
@@ -29,6 +30,9 @@ const App = () => {
   const [heroCount, setHeroCount] = useState(0);
   const [playStatus, setPlayStatus] = useState(false);
 
+  useEffect(() => {
+    axios.get("https://sodapi.onrender.com/coupon/2218767042?email=test@gmail.com").then(response => console.log(response)).catch(error => console.log(error))
+  },[])
   
 
   useEffect(() => {

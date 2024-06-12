@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
+import PaystackPayment from '../Paystack/PaystackBtn';
 import './index.css';
+import axios from 'axios';
 
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+
+  // paystack
+  const publicKey = "pk_live_fc12081cb873356e63159c45f996986266b99ad0";
+  const amount = 5000; // amount in kobo
+  const email = "customer@example.com";
+
   const [formData, setFormData] = useState({
     firstname: '',
     surname: '',
@@ -12,8 +20,7 @@ function App() {
     department: '',
     dob: '',
     couponid: '',
-    password: '',
-    confirmPassword: '',
+    passport: null,
   });
 
   const [selectedOption, setSelectedOption] = useState('');
@@ -36,6 +43,11 @@ function App() {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleFileChange = (event) => {
+    const { name, files } = event.target;
+    setFormData({ ...formData, [name]: files[0] });
   };
 
   const handleSubmit = async (event) => {
@@ -119,7 +131,7 @@ function App() {
               <div className={`progress-step ${formStep >= 0 && 'progress-step-active'} relative z-10 w-8 h-8 bg-accent text-wrap rounded-full flex items-center justify-center`} data-title="Intro"></div>
               <div className={`progress-step ${formStep >= 1 && 'progress-step-active'} relative z-10 w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center`} data-title="Contact"></div>
               <div className={`progress-step ${formStep >= 2 && 'progress-step-active'} relative z-10 w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center`} data-title="ID"></div>
-              <div className={`progress-step ${formStep >= 3 && 'progress-step-active'} relative z-10 w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center`} data-title="Password"></div>
+              <div className={`progress-step ${formStep >= 3 && 'progress-step-active'} relative z-10 w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center`} data-title="Payment"></div>
               <div className={`progress-step ${formStep >= 4 && 'progress-step-active'} relative z-10 w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center`} data-title="Complete"></div> {/* New step */}
             </div>
     
@@ -173,20 +185,19 @@ function App() {
               </div>
             )}
             {formStep === 2 && (
-            <div className="form-step">
-              <div className='Ben'>
-
-              </div>
-                          <div>
-                          <p className='  font-bold text-accent text-center pb-4'>Payment</p>
-                          </div>
-                <div className="input-group mb-4">
-                  <label htmlFor="dob" className="block text-sm font-medium mb-2">Paystack</label>
-                  <input type="date" name="dob" id="dob" value={formData.dob} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded w-full" />
+              <div className="form-step">
+                <div>
+                  <p className='font-bold text-accent text-center pb-4'>Upload Passport Photograph</p>
                 </div>
                 <div className="input-group mb-4">
-                  <label htmlFor="couponid" className="block text-sm font-medium mb-2">*Use coupon </label>
-                  <input type="number" name="couponid" id="couponid" value={formData.couponid} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded w-full" />
+                  <label htmlFor="passport" className="block text-sm font-medium mb-2">Upload Passport Photograph</label>
+                  <input type="file" name="passport" id="passport" onChange={handleFileChange} className="mt-1 p-2 border border-gray-300 rounded w-full" />
+                </div>
+                <div className="input-group mb-4">
+                  <label htmlFor="passport" className="block text-sm font-medium mb-2">Generate ID Card</label>
+                  <button className='mt-1 p-2 border bg-secondary text-white hover:bg-accent duration-300 rounded w-full'>
+                         <a href="https://getdp.co/Xeu">Generate </a>
+                   </button>
                 </div>
                 <div className="flex justify-between">
                   <button type="button" className="btn bg-gray-500 text-white py-2 px-4 rounded" onClick={prevStep}>Previous</button>
@@ -196,13 +207,16 @@ function App() {
             )}
             {formStep === 3 && (
               <div className="form-step">
-                <div className="input-group mb-4">
-                  <label htmlFor="password" className="block text-sm font-medium mb-2">Password</label>
-                  <input type="password" name="password" id="password" value={formData.password} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded w-full" />
+                <div>
+                  <p className='font-bold text-accent text-center pb-4'>Payment</p>
                 </div>
                 <div className="input-group mb-4">
-                  <label htmlFor="confirmPassword" className="block text-sm font-medium mb-2">Confirm Password</label>
-                  <input type="password" name="confirmPassword" id="confirmPassword" value={formData.confirmPassword} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded w-full" />
+                  <label htmlFor="paystack" className="block text-sm font-medium mb-2">Paystack</label>
+                  <PaystackPayment />
+                </div>
+                <div className="input-group mb-4">
+                  <label htmlFor="couponid" className="block text-sm font-medium mb-2">*Use coupon</label>
+                  <input type="number" name="couponid" id="couponid" value={formData.couponid} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded w-full" />
                 </div>
                 <div className="flex justify-between">
                   <button type="button" className="btn bg-gray-500 text-white py-2 px-4 rounded" onClick={prevStep}>Previous</button>
@@ -211,7 +225,7 @@ function App() {
               </div>
             )}
             {formStep === 4 && (
-              <div className="form-step ">
+              <div className="form-step">
                 <div className="text-center mb-6">
                   <h2 className="text-xl font-bold text-accent">Confirmation</h2>
                   <p className='text-secondary font-semibold'>Please confirm your details before submitting:</p>
@@ -233,9 +247,6 @@ function App() {
                 </div>
                 <div className="mb-4">
                   <strong>Coupon ID:</strong> {formData.couponid}
-                </div>
-                <div className="mb-4">
-                  <strong>Password:</strong> {formData.password ? '******' : ''}
                 </div>
                 <div className="flex justify-between">
                   <button type="button" className="btn bg-gray-500 text-white py-2 px-4 rounded" onClick={prevStep}>Previous</button>

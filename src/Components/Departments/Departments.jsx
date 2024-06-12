@@ -18,7 +18,7 @@ const Departments = () => {
   ]);
 
   return (
-    <div className='py-40 px-[10vw]'>
+    <div className='py-40 px-[5vw]'>
       {/* Heading */}
       <div className='flex flex-col text-center py-10 justify-center items-center'>
         <p className='font-bold text-accent'>DEPARTMENTS</p>
@@ -27,7 +27,7 @@ const Departments = () => {
 
       {/* Department cards */}
       <div className='flex flex-col gap-5 justify-center md:flex-row md:flex-wrap'>
-        <div className='w-full md:w-1/3 lg:w-1/4 p-5'>
+        <div className='w-full md:w-1/3 lg:w-1/4 '>
           <img src={DeptImg} alt="" className='w-full h-auto rounded-md shadow-lg'/>
         </div>
 

@@ -28,7 +28,7 @@ const Benefits = () => {
                       
                       <div className='bg-primary/40 rounded-lg shadow-md flex p-10 hover:scale-105 duration-200 gap-4 '>
                           <div className=' flex justify-center '>
-                          <FaHandsHelping className='text-7xl text-accent '/>
+                          <FaHandsHelping className='text-2xl text-accent '/>
                           </div>
 
                           <div className=''>
@@ -36,7 +36,7 @@ const Benefits = () => {
                               Guidance and Mentorship
                               </h1>
                               <p className='text-[0.8em]'>
-                                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid error blanditiis in placeat sed assumenda ut adipisci ipsa quidem deserunt.
+                              Receive personalized guidance and mentorship from experienced leaders, fostering spiritual maturity and helping you navigate your faith journey.Receive personalized guidance and mentorship from experienced leaders, fostering spiritual maturity. 
                               </p>
                           </div>
                       </div>
@@ -44,7 +44,7 @@ const Benefits = () => {
 
                       <div className='bg-primary/40 gap-4 rounded-lg shadow-md flex p-10 hover:scale-105 duration-200 '>
                           <div className=' flex justify-center '>
-                          <AiOutlineRise className='text-7xl text-accent '/>
+                          <AiOutlineRise className='text-2xl text-accent '/>
                           </div>
 
                           <div className=''>
@@ -52,7 +52,7 @@ const Benefits = () => {
                               Spiritual Growth and Development
                               </h1>
                               <p className='text-[0.8em]'>
-                                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid error blanditiis in placeat sed assumenda ut adipisci ipsa quidem deserunt.
+                              Experience profound spiritual growth and development through in-depth Bible study, prayer, and mentorship, strengthening your faith and character.Experience profound spiritual growth and development through in-depth Bible study, prayer, and mentorship, strengthening your faith and character.
                               </p>
                           </div>
                       </div>
@@ -60,7 +60,7 @@ const Benefits = () => {
 
                       <div className='bg-primary/40 rounded-lg shadow-md flex p-10 hover:scale-105 duration-200 gap-4 '>
                           <div className=' flex justify-center '>
-                          <PiCertificateBold className='text-7xl text-accent '/>
+                          <PiCertificateBold className='text-2xl text-accent '/>
                           </div>
 
                           <div className=''>
@@ -68,7 +68,7 @@ const Benefits = () => {
                                   Certification
                               </h1>
                               <p className='text-[0.8em]'>
-                                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid error blanditiis in placeat sed assumenda ut adipisci ipsa quidem deserunt.
+                              Earn recognized certification, enhancing your credibility and opening doors to various ministry and leadership opportunities within and beyond the church.
                               </p>
                           </div>
                       </div>
