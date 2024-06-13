@@ -14,25 +14,25 @@ function App() {
   const email = "customer@example.com";
 
   const [formData, setFormData] = useState({
-    firstname: '',
-    surname: '',
+    user_name: '',
+    user_surname: '',
     email: '',
     department: '',
     dob: '',
     couponid: '',
-    passport: null,
+    image: null,
   });
 
   const [selectedOption, setSelectedOption] = useState('');
   const [options] = useState([
-    { value: 'Wac', label: 'Wealth and Craftsmanship (WAC)' },
-    { value: 'ddp', label: 'Doctrinal Dialects and Polemics (DDP)' },
-    { value: 'gaa', label: 'Governance and Administration (GAA)' },
-    { value: 'pap', label: 'Pneumatology and Proseuche (PAP)' },
-    { value: 'eae', label: 'Ecclesiology and Ecumenism (EAE)' },
-    { value: 'wpl', label: 'Witnessing and Purposeful Living (WPL)' },
-    { value: 'ka', label: 'Kingdom Artistry (KA)' },
-    { value: 'cr', label: 'Covenant Relationship (CR)' },
+    { value: 'wealth and craftsmanship - WAC', label: 'Wealth and Craftsmanship (WAC)' },
+    { value: 'doctrinal Dialects and polemics - DDP', label: 'Doctrinal Dialects and Polemics (DDP)' },
+    { value: 'governance and administration - GAA', label: 'Governance and Administration (GAA)' },
+    { value: 'pneumatology and proseuche - PAP', label: 'Pneumatology and Proseuche (PAP)' },
+    { value: 'ecclesiology and ecumenism - EAE', label: 'Ecclesiology and Ecumenism (EAE)' },
+    { value: 'witnessing and purposeful living - WPL', label: 'Witnessing and Purposeful Living (WPL)' },
+    { value: 'kingdom artistry - KA', label: 'Kingdom Artistry (KA)' },
+    { value: 'covenant relationship - CR', label: 'Covenant Relationship (CR)' },
   ]);
 
   const handleOptionSelect = (event) => {
@@ -53,27 +53,30 @@ function App() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log('Submitting form data:', formData); // Debug log
+      console.log('Submitting form data:', formData); // Log form data
+  const {email} = formData
 
-      const response = await fetch('/api/selected-option', {
+      const response = await fetch(`https://sodapi.onrender.com/register?email=${email}`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
         },
-        body: JSON.stringify({ formData }),
+        body: JSON.stringify(formData),
       });
-
-      console.log('Response status:', response.status); // Debug log
-
+  
+      console.log( response); // Log response status
+  
       if (!response.ok) {
-        throw new Error('Failed to send selected option to backend');
+        const errorText = await response.text(); // Get the response text
+        console.log('Response text:', errorText); // Log the response text
+        throw new Error(`Failed to send selected option to backend: ${response.status} - ${response.statusText}`);
       }
-
+  
       // Redirect to home page on success
       window.location.href = '/';
     } catch (error) {
       console.error('Error sending selected option to backend:', error);
-
+  
       toast.error('Submission failed. Please try again and fill in all required fields.', {
         position: "top-right",
         autoClose: 5000,
@@ -87,6 +90,7 @@ function App() {
       });
     }
   };
+  
 
   const [formStep, setFormStep] = useState(0);
 
@@ -143,11 +147,11 @@ function App() {
                           </div>
                 <div className="input-group mb-4">
                   <label htmlFor="firstname" className="block text-sm font-medium mb-2">Firstname</label>
-                  <input type="text" name="firstname" id="firstname" value={formData.firstname} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded w-full" />
+                  <input type="text" name="user_name" id="user_name" value={formData.firstname} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded w-full" />
                 </div>
                 <div className="input-group mb-4">
                   <label htmlFor="surname" className="block text-sm font-medium mb-2">Surname</label>
-                  <input type="text" name="surname" id="surname" value={formData.surname} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded w-full" />
+                  <input type="text" name="user_surname" id="user_surname" value={formData.surname} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded w-full" />
                 </div>
                 <div className="text-right">
                   <button type="button" className="btn bg-accent text-white py-2 px-4 rounded ml-auto" onClick={nextStep}>Next</button>
